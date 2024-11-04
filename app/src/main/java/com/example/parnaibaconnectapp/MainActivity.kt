@@ -19,6 +19,6 @@ class MainActivity : AppCompatActivity() {
 
         val webView = binding.webView
         webView.settings.javaScriptEnabled = true
-        webView.loadUrl("https://g1.globo.com/")
+        webView.loadUrl("https://parnaibaconnect.onrender.com/")
     }
 }
