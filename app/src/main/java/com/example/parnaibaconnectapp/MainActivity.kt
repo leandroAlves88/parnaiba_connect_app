@@ -1,6 +1,8 @@
 package com.example.parnaibaconnectapp
 
 import android.annotation.SuppressLint
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.webkit.WebView
 import android.webkit.WebViewClient
@@ -23,11 +25,21 @@ class MainActivity : AppCompatActivity() {
         val webView = binding.webView
         webView.webViewClient = WebViewClient()
         webView.settings.javaScriptEnabled = true
-        webView.loadUrl("https://parnaibaconnect.onrender.com/")
         webView.settings.javaScriptEnabled = true
         webView.settings.domStorageEnabled = true
         webView.settings.displayZoomControls = true
         webView.settings.builtInZoomControls = true
         webView.settings.setSupportZoom(true)
+        webView.webViewClient = object : WebViewClient() {
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                if (url != null && url.startsWith("mailto:")) {
+                    startActivity(Intent(Intent.ACTION_SENDTO, Uri.parse(url)))
+                    return true
+                }
+                return false
+            }
+        }
+        webView.loadUrl("https://parnaibaconnect.onrender.com/")
+
     }
 }
