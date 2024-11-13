@@ -26,5 +26,8 @@ class MainActivity : AppCompatActivity() {
         webView.loadUrl("https://parnaibaconnect.onrender.com/")
         webView.settings.javaScriptEnabled = true
         webView.settings.domStorageEnabled = true
+        webView.settings.displayZoomControls = true
+        webView.settings.builtInZoomControls = true
+        webView.settings.setSupportZoom(true)
     }
 }
